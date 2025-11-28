@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin Catálogo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { background:#0f172a; color:white; font-family:system-ui; }
+.wrapper {
+  max-width:700px; margin:2rem auto; background:#020617;
+  padding:1.5rem; border-radius:1rem; border:1px solid #1e293b;
+}
+input, textarea {
+  width:100%; padding:0.6rem; margin-bottom:0.8rem;
+  background:#0b1220; border:1px solid #475569; border-radius:0.4rem;
+  color:white; font-size:0.9rem;
+}
+button {
+  background:#22c55e; color:black; border:none;
+  padding:0.7rem 1.3rem; border-radius:999px; cursor:pointer;
+  font-weight:600; margin-top:0.5rem;
+}
+.image-preview { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1rem; }
+.image-preview img {
+  width:120px; height:120px; object-fit:cover; border-radius:0.5rem;
+  border:1px solid #334155;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+<h2>Subir producto</h2>
+
+<form id="form" enctype="multipart/form-data">
+
+  <input type="text" name="title" placeholder="Nombre del producto" required>
+  <input type="text" name="category" placeholder="Categoría (opcional)">
+  <input type="text" name="power" placeholder="Potencia / modelo (opcional)">
+  <input type="text" name="price" placeholder="Precio (opcional)">
+  <textarea name="description" placeholder="Descripción" required></textarea>
+
+  <label>Subir hasta 5 fotos:</label>
+  <input type="file" name="images" id="images" accept="image/*" multiple>
+
+  <div class="image-preview" id="preview"></div>
+
+  <button type="submit">Guardar producto</button>
+
+</form>
+</div>
+
+<script>
+const imgInput = document.getElementById("images");
+const preview = document.getElementById("preview");
+
+imgInput.addEventListener("change", () => {
+  preview.innerHTML = "";
+  [...imgInput.files].forEach(file => {
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  });
+});
+
+document.getElementById("form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+
+  const res = await fetch("/api/products", {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+
+  if(data.ok){
+    alert("Producto guardado correctamente.");
+    e.target.reset();
+    preview.innerHTML = "";
+  } else {
+    alert("Error: " + data.error);
+  }
+});
+</script>
+
+</body>
+</html>

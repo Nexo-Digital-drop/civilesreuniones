@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soluciones Civiles & Electromecánicas - Sistemas Solares</title>
+  <meta name="description" content="Soluciones Civiles & Electromecánicas SRL - Diseño, instalación y mantenimiento de sistemas solares fotovoltaicos, iluminación industrial y tableros eléctricos en San Cristóbal, República Dominicana.">
+  <style>
+    :root {
+      --primary: #0052a5;
+      --secondary: #f4b000;
+      --dark: #0b1020;
+      --light: #f5f7fb;
+      --text: #1d2433;
+      --accent: #00b894;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #061432 0%, #020611 45%, #01030a 100%);
+      color: #f8fafc;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout base */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(3, 7, 18, 0.95), rgba(3, 7, 18, 0.7), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 4px;
+      box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(148, 163, 184, 0.4);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+      font-size: 0.72rem;
+      color: #94a3b8;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-phone {
+      display: none;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      opacity: 0.9;
+    }
+
+    .nav-phone b {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.55);
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.65) 0, transparent 60%),
+        linear-gradient(135deg, #0369a1 0%, #0f766e 40%, #4ade80 130%);
+      box-shadow:
+        0 10px 35px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.6);
+      color: #ecfeff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.2) 0, transparent 40%);
+      opacity: 0;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.82);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.05fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 2.25rem 1.5rem 2.5rem;
+      border-radius: 1.75rem;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(56,189,248,0.18) 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(250,204,21,0.16) 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(16,185,129,0.14) 0, transparent 55%),
+        linear-gradient(135deg, #020617 0%, #020617 50%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow:
+        0 30px 80px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.25) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(56,189,248,0.3) 0, transparent 55%);
+      opacity: 0.45;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e2e8f0;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+    }
+
+    .eyebrow-pill {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #7dd3fc;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: 0.7rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 2.7vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #7dd3fc, #a855f7, #fbbf24);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #cbd5f5;
+      max-width: 32rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badge {
+      font-size: 0.77rem;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(3,10,35,0.65);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.18);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.35) 0, transparent 55%);
+      color: #e2e8f0;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .btn-secondary span:first-child {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .hero-note {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 0.55rem;
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 1.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+      box-shadow:
+        0 20px 60px rgba(15, 23, 42, 1),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      padding: 0;
+    }
+
+    .hero-banner-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 1.5rem;
+    }
+
+    main section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #60a5fa;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      max-width: 36rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1.1rem 1.1rem 1rem;
+      border-radius: 1.25rem;
+      background: linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.92));
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.85);
+    }
+
+    .benefit-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+
+    .benefit-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .benefit-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .benefit-text {
+      font-size: 0.86rem;
+      color: #e2e8f0;
+    }
+
+    .badge-list {
+      margin-top: 0.65rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #cbd5f5;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .inspection-card {
+      padding: 1.1rem;
+      border-radius: 1.25rem;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18) 0, transparent 55%),
+        linear-gradient(to bottom right, rgba(15,23,42,0.98), rgba(15,23,42,0.9));
+      border: 1px solid rgba(96, 165, 250, 0.45);
+      box-shadow:
+        0 16px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .inspection-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .inspection-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .inspection-title span.icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      background: rgba(15,23,42,0.9);
+    }
+
+    .inspection-chip {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(21, 128, 61, 0.2);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+    }
+
+    .inspection-text {
+      font-size: 0.84rem;
+      color: #d1fae5;
+      margin-bottom: 0.7rem;
+    }
+
+    .inspection-list {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-bottom: 0.7rem;
+    }
+
+    .inspection-list li {
+      margin-bottom: 0.18rem;
+    }
+
+    .inspection-footnote {
+      font-size: 0.74rem;
+      color: #a5b4fc;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    #productos-loading {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+    }
+
+    .product-card {
+      border-radius: 1.1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 0.95rem;
+      box-shadow:
+        0 12px 35px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .product-image {
+      margin: -0.4rem -0.4rem 0.4rem;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .product-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .product-meta {
+      font-size: 0.78rem;
+      color: #cbd5f5;
+    }
+
+    .product-meta div {
+      display: inline-block;
+      margin-right: 0.4rem;
+    }
+
+    .product-guarantee {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.75rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .product-guarantee span {
+      margin-right: 0.35rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .product-label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+
+    .product-cta {
+      font-size: 0.78rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.8);
+      background: radial-gradient(circle at 0 0, rgba(34,197,94,0.35) 0, transparent 55%);
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .product-cta span {
+      font-size: 0.9rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.15fr);
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+
+    .form-card {
+      padding: 1.1rem;
+      border-radius: 1.25rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow:
+        0 14px 40px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 0.2rem;
+      color: #cbd5f5;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.65rem;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    .form-group textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 0.4rem;
+    }
+
+    .contact-info-card {
+      padding: 1.1rem;
+      border-radius: 1.25rem;
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,0.2) 0, transparent 55%),
+        rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(59, 130, 246, 0.55);
+      box-shadow:
+        0 16px 45px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .contact-info-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-info-text {
+      font-size: 0.85rem;
+      color: #cbd5f5;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info-list {
+      list-style: none;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+    }
+
+    .contact-info-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(45, 212, 191, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      color: #ccfbf1;
+      margin-bottom: 0.45rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding: 1.4rem 1.25rem 0.5rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(37,99,235,0.35) 0, transparent 55%), rgba(15, 23, 42, 0.98);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-brand span.icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 14px;
+      background: rgba(148, 163, 184, 0.6);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.5rem 1.15rem 1.7rem;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .benefits-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      main {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-phone {
+        display: inline-flex;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo-wrap">
+      <img src="img/logo-soluciones.png"
+           alt="Soluciones Civiles & Electromecánicas"
+           class="logo-img">
+      <div class="logo-text">
+        <div class="logo-title">Soluciones Civiles & Electromecánicas</div>
+        <div class="logo-subtitle">Ingeniería, Sistemas Solares y Electromecánica</div>
+      </div>
+    </div>
+
+    <div class="nav-cta">
+      <div class="nav-phone">
+        <span>📞 <b>829-692-4994</b></span>
+      </div>
+      <a href="#contacto" class="btn-primary">
+        <span class="btn-primary-icon">⚡</span>
+        <span>Solicitar evaluación de proyecto</span>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span>Ingeniería y sistemas solares certificados</span>
+        <span class="eyebrow-pill">RNC: 131043526 · San Cristóbal, RD</span>
+      </div>
+
+      <h1 class="hero-title">
+        Sistemas solares diseñados para
+        <span>amortizarse con sus propios ahorros.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Estudiamos su consumo, su techo y sus objetivos, y diseñamos un sistema fotovoltaico a la medida:
+        seguro, eficiente y con retorno de inversión claro desde el primer año.
+      </p>
+
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          +50 sistemas solares instalados
+        </div>
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          Sistemas residenciales, comerciales e industriales
+        </div>
+        <div class="hero-badge">
+          <div class="badge-dot"></div>
+          Tableros, protecciones e iluminación industrial
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          <span class="btn-primary-icon">📋</span>
+          <span>Agenda una visita técnica</span>
+        </a>
+        <a href="#productos" class="btn-secondary">
+          <span>📂</span>
+          <span>Ver catálogo de luminarias, tableros y accesorios</span>
+        </a>
+      </div>
+      <div class="hero-note">
+        Evaluación sin compromiso en San Cristóbal, Santo Domingo y zonas cercanas.
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-card">
+        <img src="img/banner-residencial.png"
+             alt="Sistema solar residencial - Soluciones Civiles & Electromecánicas"
+             class="hero-banner-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section>
+    <div class="section-header">
+      <div class="section-kicker">Por qué trabajar con nosotros</div>
+      <h2 class="section-title">Ingeniería completa: desde el estudio hasta la puesta en marcha.</h2>
+      <p class="section-subtitle">
+        Acompañamos todo el ciclo del proyecto: análisis de consumo, diseño, instalación, tableros de protección, canalizaciones y puesta en operación del sistema.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <div class="benefit-icon">📊</div>
+          <div>
+            <div class="benefit-title">Estudio técnico antes de instalar</div>
+            <div class="benefit-text">
+              Analizamos su perfil de consumo, tipo de carga y condiciones de su techo o estructura para definir el sistema adecuado, evitando sobredimensionar o quedarse corto.
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🛡️</div>
+          <div>
+            <div class="benefit-title">Protecciones y tableros diseñados a la medida</div>
+            <div class="benefit-text">
+              Diseñamos y ensamblamos tableros de protección fotovoltaica y tableros de distribución, siguiendo buenas prácticas de seguridad eléctrica y normativa aplicable.
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">💡</div>
+          <div>
+            <div class="benefit-title">Iluminación industrial y soluciones integrales</div>
+            <div class="benefit-text">
+              Integramos luminarias tipo campana UFO, reflectores y sistemas de iluminación industrial a sus proyectos, combinando eficiencia energética y buen nivel de iluminación.
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🔧</div>
+          <div>
+            <div class="benefit-title">Mantenimiento y ampliaciones</div>
+            <div class="benefit-text">
+              Evaluamos sistemas existentes, proponemos mejoras y ampliaciones, y corregimos problemas de instalación para que su inversión siga rindiendo al máximo.
+            </div>
+          </div>
+        </div>
+
+        <div class="badge-list">
+          <span class="badge">Sistemas solares conectados a red</span>
+          <span class="badge">Sistemas híbridos y bancos de baterías</span>
+          <span class="badge">Tableros fotovoltaicos y de fuerza</span>
+          <span class="badge">Proyectos residenciales, comerciales e industriales</span>
+        </div>
+      </div>
+
+      <div class="inspection-card">
+        <div class="inspection-header">
+          <div class="inspection-title">
+            <span class="icon">✅</span>
+            <span>Evaluación técnica de su sistema actual</span>
+          </div>
+          <div class="inspection-chip">Ideal si ya tiene un sistema instalado</div>
+        </div>
+
+        <div class="inspection-text">
+          ¿Ya cuenta con un sistema solar o luminarias instaladas y no está seguro si están trabajando al 100%?
+          Podemos realizar una inspección técnica y entregarle un informe con hallazgos y recomendaciones.
+        </div>
+
+        <ul class="inspection-list">
+          <li>• Revisión de protecciones eléctricas y tableros.</li>
+          <li>• Verificación de configuración de inversor.</li>
+          <li>• Estado de paneles, estructuras y cableado.</li>
+          <li>• Medición básica de parámetros eléctricos.</li>
+        </ul>
+
+        <div class="inspection-footnote">
+          Incluimos recomendaciones claras para mejorar rendimiento, seguridad y vida útil del sistema.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS DINÁMICOS -->
+  <section id="productos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Catálogo</div>
+        <h2 class="section-title">Productos de nuestro catálogo técnico</h2>
+        <p class="section-subtitle">
+          Este listado se genera automáticamente desde el archivo Excel convertido a catálogo digital.
+        </p>
+      </div>
+
+      <div class="products-grid" id="productos-grid">
+        <p id="productos-loading">Cargando productos...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Agenda tu proyecto</div>
+        <h2 class="section-title">Cuéntenos qué necesita y le asesoramos.</h2>
+        <p class="section-subtitle">
+          Complete el formulario y un ingeniero de nuestro equipo se pondrá en contacto para entender su proyecto y presentarle una propuesta.
+        </p>
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <form class="form-card" action="gracias.html" method="GET">
+            <div class="form-group">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej. 829 000 0000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="correo">Correo electrónico</label>
+              <input type="email" id="correo" name="correo" placeholder="Ej. correo@dominio.com">
+            </div>
+
+            <div class="form-group">
+              <label for="tipo-servicio">Tipo de servicio</label>
+              <select id="tipo-servicio" name="tipo-servicio" required>
+                <option value="">Seleccione una opción</option>
+                <option value="sistema-solar">Sistema solar residencial</option>
+                <option value="sistema-solar-industrial">Sistema solar comercial / industrial</option>
+                <option value="campanas-ufo">Iluminación industrial</option>
+                <option value="tableros-protecciones">Tableros y protecciones fotovoltaicas</option>
+                <option value="mantenimiento">Mantenimiento / ampliación de sistema</option>
+                <option value="otro">Otro proyecto electromecánico</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="detalles">Cuéntenos brevemente de su proyecto</label>
+              <textarea id="detalles" name="detalles" placeholder="Ej. Consumo promedio, ubicación, tipo de techo, si ya tiene sistema instalado, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top:0.4rem;">
+              <span class="btn-primary-icon">📨</span>
+              <span>Enviar mi consulta</span>
+            </button>
+
+            <div class="form-note">
+              Respetamos su tiempo: solo le contactaremos para temas relacionados a su consulta.
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-badge">
+            <span>📍</span>
+            <span>Base en San Cristóbal · Proyectos en todo el país</span>
+          </div>
+          <div class="contact-info-title">Soluciones Civiles & Electromecánicas SRL</div>
+          <div class="contact-info-text">
+            Ingeniería civil y electromecánica con enfoque en sistemas solares, iluminación industrial y tableros de fuerza y control.
+          </div>
+          <ul class="contact-info-list">
+            <li>• Teléfono / WhatsApp: <a href="https://wa.me/18296924994" target="_blank">829-692-4994</a></li>
+            <li>• Correo: <a href="mailto:evalenzuela54@hotmail.com">evalenzuela54@hotmail.com</a></li>
+            <li>• Gerente de ventas: Ing. Eduardo Valenzuela</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="icon">⚡</span>
+      <span>&copy; <span id="year"></span> Soluciones Civiles & Electromecánicas SRL. Todos los derechos reservados.</span>
+    </div>
+    <div class="footer-links">
+      <span>Sistemas solares · Iluminación industrial · Tableros y protecciones eléctricas.</span>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+  async function loadProducts() {
+    const grid = document.getElementById('productos-grid');
+    const loading = document.getElementById('productos-loading');
+
+    if (!grid) {
+      console.error('No se encontró el contenedor de productos');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+
+      if (loading) loading.remove();
+
+      if (!products.length) {
+        grid.innerHTML = '<p>No hay productos cargados todavía.</p>';
+        return;
+      }
+
+      grid.innerHTML = '';
+
+      products.forEach(pRaw => {
+        const p = {
+          nombre: pRaw.nombre || pRaw.title || 'Producto sin nombre',
+          categoria: pRaw.categoria || pRaw.category || '',
+          potencia: pRaw.potencia || pRaw.power || '',
+          tamano: pRaw.tamano || '',
+          chips: pRaw.chips || '',
+          ip: pRaw.ip || '',
+          descripcion: pRaw.descripcion || pRaw.description || '',
+          observaciones: pRaw.observaciones || 'Producto de catálogo certificado.',
+          codigo: pRaw.codigo || '',
+          imageUrl: pRaw.imageUrl || ''
+        };
+
+        const hasImage = p.imageUrl && p.imageUrl.trim() !== '';
+
+        const card = document.createElement('article');
+        card.className = 'product-card';
+
+        card.innerHTML = `
+          ${hasImage ? `
+            <div class="product-image">
+              <img src="${p.imageUrl}" alt="${p.nombre}">
+            </div>
+          ` : ''}
+          <div class="product-header">
+            <div class="product-name">${p.nombre}</div>
+            <div class="product-meta">
+              ${p.categoria ? `<div><strong>${p.categoria}</strong></div>` : ''}
+              ${p.potencia ? `<div>Potencia: ${p.potencia}</div>` : ''}
+              ${p.tamano ? `<div>Tamaño: ${p.tamano}</div>` : ''}
+              ${p.chips ? `<div>LED chips: ${p.chips}</div>` : ''}
+              ${p.ip ? `<div>IP: ${p.ip}</div>` : ''}
+              ${p.descripcion ? `<div>${p.descripcion}</div>` : ''}
+            </div>
+          </div>
+
+          <div class="product-guarantee">
+            <span>📌</span> ${p.observaciones}
+          </div>
+
+          <div class="product-footer">
+            <div class="product-label">
+              ${p.codigo ? `Código: ${p.codigo}` : 'Código interno a solicitud'}
+            </div>
+            <a class="product-cta"
+              href="https://wa.me/18296924994?text=Hola,%20vi%20el%20producto%20${encodeURIComponent(p.nombre)}%20en%20la%20p%C3%A1gina%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+              target="_blank">
+              <span>💬</span> Cotizar este producto
+            </a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    } catch (err) {
+      console.error(err);
+      if (loading) {
+        loading.textContent = 'No se pudieron cargar los productos.';
+      } else {
+        grid.innerHTML = '<p>No se pudieron cargar los productos.</p>';
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadProducts);
+  </script>
+
+</body>
+</html>
