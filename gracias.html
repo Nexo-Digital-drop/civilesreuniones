@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias - Soluciones Civiles & Electromecánicas</title>
+  <meta name="description" content="Gracias por contactar a Soluciones Civiles & Electromecánicas. Hemos recibido su solicitud sobre sistemas solares o servicios electromecánicos.">
+  <style>
+    :root {
+      --primary: #0052a5;
+      --secondary: #f4b000;
+      --dark: #0b1020;
+      --light: #f5f7fb;
+      --text: #1d2433;
+      --accent: #00b894;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Layout base */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(11,16,32,0.96);
+      backdrop-filter: blur(6px);
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      object-fit: cover;
+      background: #ffffff;
+      padding: 2px;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 0.9rem;
+    }
+
+    .logo-text-sub {
+      font-weight: 400;
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: #d7e2ff;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-cta span {
+      font-size: 1.1rem;
+    }
+
+    /* HERO / THANK YOU */
+    .hero {
+      background: radial-gradient(circle at top left, #173a7a, #050914);
+      color: #fff;
+      padding: 4rem 0 4rem;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16,185,129,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.21em;
+      color: #a9c6ff;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1rem, 2.6rem);
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
+      color: var(--secondary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 560px;
+      margin: 0 auto 1.6rem;
+      color: #dde5ff;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: #9badd8;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 1.5rem;
+      border-radius: 999px;
+      background: #25d366;
+      color: #04110a;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .btn-primary span {
+      font-size: 1.2rem;
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      color: #e0e7ff;
+      font-size: 0.9rem;
+    }
+
+    /* CARD RESUMEN */
+    .summary-section {
+      background: var(--light);
+      padding: 2.8rem 0 3.2rem;
+    }
+
+    .summary-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 28px rgba(15,23,42,0.06);
+      font-size: 0.86rem;
+      color: #4b5563;
+    }
+
+    .summary-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      color: #111827;
+    }
+
+    .summary-list {
+      list-style: none;
+      margin-left: 0;
+      margin-top: 0.4rem;
+    }
+
+    .summary-list li {
+      display: flex;
+      gap: 0.45rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .summary-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--primary);
+      margin-top: 0.35rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #9ca3af;
+      font-size: 0.78rem;
+      padding: 1.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 40;
+    }
+
+    .whatsapp-float a {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+      font-size: 1.9rem;
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 3rem 0 3rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .summary-card {
+        padding: 1.35rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating WhatsApp -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/18296924994?text=Hola,%20acabo%20de%20enviar%20mis%20datos%20desde%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sistemas%20solares" target="_blank" aria-label="WhatsApp">
+      💬
+    </a>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <img src="img/logo-soluciones.png" alt="Soluciones Civiles & Electromecánicas" class="logo-img">
+          <div>
+            <div class="logo-text-main">Soluciones Civiles & Electromecánicas</div>
+            <div class="logo-text-sub">Carretera Sánchez km 5, No. 87 · San Cristóbal</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="index.html#beneficios">Beneficios</a>
+          <a href="index.html#servicios">Servicios</a>
+          <a href="index.html#productos">Productos</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <a class="nav-cta" href="https://wa.me/18296924994?text=Hola,%20acabo%20de%20enviar%20mis%20datos%20y%20quiero%20hablar%20con%20un%20ingeniero" target="_blank">
+          <span>💬</span> Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- THANK YOU HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-icon">✅</div>
+        <div class="hero-kicker">Solicitud enviada</div>
+        <h1 class="hero-title">
+          Gracias <span id="nombreSpan"></span> por contactarnos.
+        </h1>
+        <p class="hero-subtitle">
+          Hemos recibido sus datos correctamente. Un ingeniero de Soluciones Civiles & Electromecánicas revisará su información y se pondrá en contacto con usted para ayudarle a diseñar el sistema ideal.
+        </p>
+        <p class="hero-note">
+          Si desea acelerar la comunicación, puede escribirnos ahora mismo por WhatsApp y mencionar que ya envió el formulario desde la página web.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="https://wa.me/18296924994?text=Hola,%20acabo%20de%20enviar%20mis%20datos%20desde%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20mi%20proyecto%20de%20sistemas%20solares" target="_blank" class="btn-primary">
+            <span>💬</span> Continuar por WhatsApp
+          </a>
+          <a href="index.html" class="btn-secondary">Volver a la página principal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMEN / EXPECTATIVAS -->
+  <section class="summary-section">
+    <div class="container">
+      <div class="summary-card">
+        <div class="summary-title">¿Qué pasará a partir de ahora?</div>
+        <p>
+          Para que tenga todo claro, estos son los próximos pasos habituales luego de enviar su solicitud:
+        </p>
+        <ul class="summary-list">
+          <li>
+            <span class="summary-bullet"></span>
+            <span>Revisamos los datos que nos envió (tipo de servicio, contacto y detalles del proyecto).</span>
+          </li>
+          <li>
+            <span class="summary-bullet"></span>
+            <span>Un ingeniero le contactará por teléfono o WhatsApp para hacerle algunas preguntas rápidas.</span>
+          </li>
+          <li>
+            <span class="summary-bullet"></span>
+            <span>En base a su consumo y espacio disponible, le preparamos una propuesta clara con equipos, garantías y tiempos estimados de instalación.</span>
+          </li>
+          <li>
+            <span class="summary-bullet"></span>
+            <span>Si todo le parece bien, agendamos la visita técnica o el inicio del proyecto.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Soluciones Civiles & Electromecánicas. Todos los derechos reservados.</div>
+        <div>Proyecto de paneles solares · Iluminación industrial · Tableros y protecciones eléctricas.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Personalizar el nombre si viene en el query string (?nombre=)
+    const params = new URLSearchParams(window.location.search);
+    const nombre = params.get('nombre');
+    const nombreSpan = document.getElementById('nombreSpan');
+
+    if (nombre && nombre.trim() !== "") {
+      // Primera palabra / nombre corto
+      const limpio = nombre.trim();
+      const primeraParte = limpio.split(" ")[0];
+      nombreSpan.textContent = primeraParte;
+    } else {
+      nombreSpan.textContent = ""; // deja solo "Gracias por contactarnos."
+    }
+  </script>
+</body>
+</html>
