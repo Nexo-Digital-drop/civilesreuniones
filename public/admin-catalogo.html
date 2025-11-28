@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Catálogo - Soluciones Civiles</title>
+  <style>
+    :root {
+      --primary: #00b894;
+      --primary-dark: #009f7c;
+      --bg: #050814;
+      --card: #0b1024;
+      --border: #1c223b;
+      --text-main: #f5f7ff;
+      --text-muted: #9aa2c4;
+      --danger: #ff7675;
+      --danger-dark: #e05656;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #061432 0%, #020612 50%, #000 100%);
+      color: var(--text-main);
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .panel-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 184, 148, 0.12);
+      border: 1px solid rgba(0, 184, 148, 0.4);
+      color: #a4ffdf;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 820px) {
+      body {
+        padding: 16px;
+      }
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.02), rgba(0,0,0,0.8));
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      padding: 18px 18px 16px;
+      backdrop-filter: blur(18px);
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1.4fr;
+      gap: 10px 12px;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: #050814;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 7px 9px;
+      font-size: 13px;
+      color: var(--text-main);
+      outline: none;
+      transition: border 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(154,162,196,0.8);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(0,184,148,0.8);
+      box-shadow: 0 0 0 1px rgba(0,184,148,0.5);
+      background: #050b1e;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+      max-height: 160px;
+    }
+
+    .field-group {
+      margin-bottom: 8px;
+    }
+
+    .inline-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .inline-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 30px rgba(0,184,148,0.45);
+      transition: transform 0.12s, box-shadow 0.12s, filter 0.12s;
+      margin-top: 6px;
+    }
+
+    .btn-primary span {
+      font-size: 16px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 18px 40px rgba(0,184,148,0.6);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 20px rgba(0,184,148,0.4);
+    }
+
+    .btn-danger {
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 8px 20px rgba(224,86,86,0.45);
+      transition: transform 0.1s, box-shadow 0.1s, filter 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-danger:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .btn-danger:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(224,86,86,0.35);
+    }
+
+    .status-bar {
+      font-size: 11px;
+      margin-top: 8px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ecc71;
+      box-shadow: 0 0 0 5px rgba(46,204,113,0.25);
+    }
+
+    .status-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Tabla de productos */
+    .table-wrapper {
+      max-height: 380px;
+      overflow: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(6,10,32,0.9);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    thead {
+      background: rgba(5, 10, 30, 0.98);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th, td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    tbody tr:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .col-name {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .col-price {
+      font-weight: 600;
+    }
+
+    .badge-small {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,184,148,0.5);
+      font-size: 10px;
+      color: #a4ffdf;
+      background: rgba(0,184,148,0.1);
+    }
+
+    .empty-msg {
+      padding: 14px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="panel-header">
+      <div>
+        <div class="panel-title">Panel de catálogo</div>
+        <div class="panel-subtitle">
+          Gestiona los productos que aparecen en la página principal.
+        </div>
+      </div>
+      <div class="badge">Soluciones Civiles & Electromecánicas</div>
+    </div>
+
+    <div class="grid">
+      <!-- Columna izquierda: formulario -->
+      <div class="card">
+        <div class="card-title">Nuevo producto</div>
+        <div class="card-subtitle">
+          Completa los campos y haz clic en “Guardar producto”. Aparecerá en el catálogo automáticamente.
+        </div>
+
+        <form id="productForm"enctype="multipart/form-data">
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="name">Nombre del producto</label>
+              <input type="text" id="name" name="name" placeholder="Ej: Luminaria LED 150W" required />
+            </div>
+
+            <div class="field-group">
+              <label for="category">Categoría (opcional)</label>
+              <input type="text" id="category" name="category" placeholder="Ej: Iluminación, Energía Solar" />
+            </div>
+
+            <div class="field-group">
+              <label for="power">Potencia / modelo (opcional)</label>
+              <input type="text" id="power" name="power" placeholder="Ej: 150W, 24V, etc." />
+            </div>
+
+            <div class="field-group">
+              <label for="price">Precio (texto libre)</label>
+              <input type="text" id="price" name="price" placeholder="Ej: RD$ 12,500 o A consultar" />
+            </div>
+
+            <div class="field-group" style="grid-column: 1 / -1;">
+              <label for="description">Descripción breve</label>
+              <textarea id="description" name="description" placeholder="Detalles importantes del producto, garantía, aplicación, etc."></textarea>
+            </div>
+
+            <div class="field-group" style="grid-column: 1 / -1;">
+  <label for="imageFile">Imagen del producto (subir desde el dispositivo)</label>
+  <input type="file" id="imageFile" name="imageFile" accept="image/*" />
+</div>
+
+<div class="field-group" style="grid-column: 1 / -1;">
+  <label for="imageUrl">O URL de la imagen (opcional)</label>
+  <input type="text" id="imageUrl" name="imageUrl" placeholder="Ej: img/productos/reflector-150w.jpg" />
+</div>
+
+
+          <button type="submit" class="btn-primary">
+            <span>⚡</span>
+            Guardar producto
+          </button>
+
+          <div class="status-bar">
+            <div class="status-left">
+              <span class="status-dot"></span>
+              <span id="statusText">Conectado al catálogo</span>
+            </div>
+            <span id="countText">0 productos totales</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Columna derecha: lista de productos -->
+      <div class="card">
+        <div class="card-title">Productos actuales</div>
+        <div class="card-subtitle">
+          Aquí ves lo mismo que se muestra en la página principal. Puedes eliminar productos si el cliente lo solicita.
+        </div>
+
+        <div class="table-wrapper" id="tableWrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- Filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+        <div class="empty-msg" id="emptyMsg" style="display:none;">
+          Todavía no hay productos cargados. Agrega el primero desde el formulario de la izquierda.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('productForm');
+    const statusText = document.getElementById('statusText');
+    const countText = document.getElementById('countText');
+    const tbody = document.getElementById('productsTableBody');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch (err) {
+        console.error(err);
+        statusText.textContent = 'Error cargando productos';
+        return [];
+      }
+    }
+
+    function renderProducts(products) {
+      tbody.innerHTML = '';
+
+      if (!products.length) {
+        emptyMsg.style.display = 'block';
+        countText.textContent = '0 productos totales';
+        return;
+      }
+
+      emptyMsg.style.display = 'none';
+      countText.textContent = `${products.length} producto${products.length !== 1 ? 's' : ''} totales`;
+
+      products.forEach((p, index) => {
+        const tr = document.createElement('tr');
+
+        const name = p.name || p.nombre || 'Sin nombre';
+        const price = p.price || p.precio || '';
+        const category = p.category || p.categoria || '';
+
+        const idToUse = p.id != null ? p.id : index; // fallback por si no tiene id
+
+        tr.innerHTML = `
+          <td class="col-name">
+            ${name}
+            ${p.power || p.potencia ? `<div style="font-size:10px;color:#9aa2c4;margin-top:2px;">${p.power || p.potencia}</div>` : ''}
+          </td>
+          <td class="col-price">
+            ${price ? price : '<span style="color:#9aa2c4;">-</span>'}
+          </td>
+          <td>
+            ${category ? `<span class="badge-small">${category}</span>` : '<span style="color:#9aa2c4;font-size:11px;">-</span>'}
+          </td>
+          <td>
+            <button class="btn-danger" data-id="${idToUse}">
+              🗑 Eliminar
+            </button>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      // Añadir listeners a los botones de eliminar
+      document.querySelectorAll('.btn-danger').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const id = e.currentTarget.getAttribute('data-id');
+          const confirmDelete = confirm('¿Seguro que quieres eliminar este producto del catálogo?');
+          if (!confirmDelete) return;
+
+          try {
+            const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
+            const data = await res.json();
+            if (!res.ok) {
+              alert(data.message || 'Error eliminando producto');
+              return;
+            }
+            alert('Producto eliminado correctamente');
+            loadProducts();
+          } catch (err) {
+            console.error(err);
+            alert('Error de conexión eliminando producto');
+          }
+        });
+      });
+    }
+
+    async function loadProducts() {
+      const products = await fetchProducts();
+      renderProducts(products);
+    }
+
+    // Manejo del submit del formulario
+    form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  statusText.textContent = 'Guardando producto...';
+
+  // Usamos FormData para enviar textos + archivo
+  const formData = new FormData(form);
+
+  // Opcional: limpiamos espacios en los campos de texto
+  formData.set('name', form.name.value.trim());
+  formData.set('description', form.description.value.trim());
+  formData.set('price', form.price.value.trim());
+  formData.set('category', form.category.value.trim());
+  formData.set('power', form.power.value.trim());
+  formData.set('imageUrl', form.imageUrl.value.trim());
+
+  try {
+    const res = await fetch('/api/products', {
+      method: 'POST',
+      body: formData // SIN headers, fetch los pone solo
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      console.error(data);
+      alert(data.message || 'Error guardando producto');
+      statusText.textContent = 'Error guardando producto';
+      return;
+    }
+
+    form.reset();
+    statusText.textContent = 'Producto guardado y catálogo actualizado';
+    loadProducts();
+  } catch (err) {
+    console.error(err);
+    alert('Error de conexión guardando producto');
+    statusText.textContent = 'Error de conexión';
+  }
+});
+
+
+    // Cargar productos al entrar
+    loadProducts();
+  </script>
+</body>
+</html>
